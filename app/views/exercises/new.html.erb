@@ -1,0 +1,16 @@
+<%= form_for @exercise, url: {action: "create"} do |f| %>
+  <%= f.label :exercise %>
+  <%= f.text_field :name %>
+  <%= f.select(:day, options_for_select(
+    [
+      ['Monday', 1],
+      ['Tuesday', 2],
+      ['Wednesday', 3],
+      ['Thursday', 4],
+      ['Friday', 5],
+      ['Saturday', 6],
+      ['Sunday', 7]
+    ]
+  )) %>
+  <%= f.submit "Create" %>
+<% end %>
