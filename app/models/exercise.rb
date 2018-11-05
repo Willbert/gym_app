@@ -2,7 +2,8 @@ class Exercise < ApplicationRecord
   validates_presence_of :day
   validates_presence_of :name
   def self.for_today
-    where(day: Time.now.utc.wday)
+    all_exercises = where(day: Time.now.utc.wday)
+    all_exercises.shuffle.first(4)
   end
 
   def weekday

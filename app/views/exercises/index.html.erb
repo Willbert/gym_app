@@ -1,3 +1,14 @@
-<% Exercise.for_today.each do |exercise| %>
-  <%= exercise.name %>
-<% end %>
+<h3><%= flash[:message] %></h3>
+<ul>
+  <% @exercises.each do |exercise| %>
+    <li class="exercise_list"><%= exercise.name %>
+      <span class="day_of_week"><%= exercise.weekday %></span>
+    </li>
+    <% if @edit_button %>
+      <span class="edit_button"><%= link_to('edit', edit_exercise_path(exercise.id)) %></span>
+    <% end %>
+  <% end %>
+</ul>
+<%= link_to('show all', exercises_path(include: 'all')) %>
+<%= link_to('show less', exercises_path) %>
+
