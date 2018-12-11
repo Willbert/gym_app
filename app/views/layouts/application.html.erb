@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="eng">
   <head>
     <title>GymApp</title>
     <%= csrf_meta_tags %>
@@ -7,9 +7,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
-  <body>
+  <body class="container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= render partial: "devise/menu/login_items" %>
     <%= yield %>
   </body>
 </html>

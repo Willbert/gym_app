@@ -1,14 +1,35 @@
 <h3><%= flash[:message] %></h3>
-<ul>
+<div class="title-container">
+  <h1>Todays Exercises</h1>
+    <div class="container">
+      <% if @show_all %>
+        <span class="btn btn-default">
+          <%= link_to('show all', exercises_path(include: 'all')) %>
+        </span>
+      <% end %>
+      <% if @show_less %>
+        <span class="btn btn-default">
+          <%= link_to('show less', exercises_path) %>
+        </span>
+      <% end %>
+    </div>
+</div>
+<div class="exercises">
   <% @exercises.each do |exercise| %>
-    <li class="exercise_list"><%= exercise.name %>
-      <span class="day_of_week"><%= exercise.weekday %></span>
-    </li>
-    <% if @edit_button %>
-      <span class="edit_button"><%= link_to('edit', edit_exercise_path(exercise.id)) %></span>
-    <% end %>
+    <div class="exercise">
+      <div class="thumbnail">
+        <div class="caption">
+          <span class="exercise_list"><%= exercise.name %></span>
+          <span class="day_of_week"><%= exercise.weekday %></span>
+          <% if @edit_button %>
+            <span class="btn btn-primary edit_button"><%= link_to('edit', edit_exercise_path(exercise.id)) %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
-<%= link_to('show all', exercises_path(include: 'all')) %>
-<%= link_to('show less', exercises_path) %>
+</div>
+
+
+
 

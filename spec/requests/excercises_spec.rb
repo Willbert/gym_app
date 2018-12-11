@@ -26,7 +26,7 @@ RSpec.describe 'exercises' do
       get exercises_path
     end
 
-    expect(response.body.scan(/<li class="exercise_list">/m).size).to eq 4
+    expect(response.body.scan(/<span class="exercise_list">/m).size).to eq 4
   end
 
   it 'puts a list of exercises for current day' do
@@ -55,13 +55,13 @@ RSpec.describe 'exercises' do
   it 'returns all exercises if we pass "include=all" ' do
     10.times{ create(:exercise) }
     get exercises_path, params: { include: 'all' }
-    expect(response.body.scan(/<li class="exercise_list">/m).size).to eq 10
+    expect(response.body.scan(/<span class="exercise_list">/m).size).to eq 10
   end
 
   it 'add edit button on "include=all"' do
     10.times{ create(:exercise) }
     get exercises_path, params: { include: 'all' }
-    expect(response.body.scan(/<span class="edit_button">/m).size).to eq 10
+    expect(response.body.scan(/<span class="btn btn-primary edit-button">/m).size).to eq 10
   end
 
 end
