@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_12_03_141357) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.integer "day"
